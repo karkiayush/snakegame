@@ -17,7 +17,7 @@ class LoginService {
           .signInWithPassword(email: email, password: password);
 
       if (response.user != null) {
-        Navigator.pushReplacementNamed(context, '/game');
+        Navigator.pushReplacementNamed(context, '/menu');
       } else {
         _showError(context, "Login failed. Please check your credentials.");
       }
