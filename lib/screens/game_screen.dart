@@ -18,7 +18,7 @@ class GameScreen extends StatelessWidget {
           builder: (_) => AlertDialog(
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-            title: const Text("💀 Game Over"),
+            title: const Text("Game Over"),
             content: Text("Your score: ${game.score}"),
             actions: [
               TextButton(
@@ -27,13 +27,13 @@ class GameScreen extends StatelessWidget {
                   game.startGame();
                   Navigator.of(context).pop();
                 },
-                child: const Text("🔄 Play Again"),
+                child: const Text("Play Again"),
               ),
               TextButton(
                 onPressed: () {
                   Navigator.of(context).pushReplacementNamed('/menu');
                 },
-                child: const Text("🚪 Exit"),
+                child: const Text("Exit"),
               ),
             ],
           ),
