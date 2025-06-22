@@ -34,16 +34,6 @@ A fun and interactive Snake Game built using Flutter, powered by Supabase for us
 
 ---
 
-## Screenshots
-
-_Add screenshots of:_
-- Login/Signup Screen
-- Game Grid in action
-- Game Over Dialog
-- Scoreboard (if implemented)
-
----
-
 ## Authentication & Storage
 
 - Auth handled using Supabase's `auth` module.
