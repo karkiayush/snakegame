@@ -48,7 +48,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.green,
       ),
 
-      /*Based on the user login or signed up state, we'll navigate them to home screen else if not signed up or login, we'll navigate them to the auth screens*/
+      /*Based on the user login or signed up state, we'll navigate them to menu screen else if not signed up or login, we'll navigate them to the auth screens*/
       /*Adding home with FutureBuilder to check the user session*/
       home: FutureBuilder<Session?>(
         future: Future.value(supabase.auth.currentSession),

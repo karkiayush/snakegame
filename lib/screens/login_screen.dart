@@ -56,10 +56,3 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 }
-
-/*
-*
-Add loading state (isLoading)
-Use Provider or Riverpod to manage auth state globally
-Persist user session and redirect to /game if already logged in
-* */

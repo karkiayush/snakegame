@@ -44,7 +44,6 @@ class _MenuScreenState extends State<MenuScreen> {
   Widget build(BuildContext context) {
     final supabase = Supabase.instance.client;
     final userEmail = supabase.auth.currentUser?.email ?? "Unknown";
-    // final userName=supabase.auth.
 
     return Scaffold(
       appBar: AppBar(
@@ -78,14 +77,14 @@ class _MenuScreenState extends State<MenuScreen> {
                   onPressed: () {
                     Navigator.pushNamed(context, '/game');
                   },
-                  child: const Text("🎮 Start Game"),
+                  child: const Text("Start Game"),
                 ),
                 const SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: () {
                     Navigator.pushNamed(context, '/scores');
                   },
-                  child: const Text("📈 View Scores"),
+                  child: const Text("View Scores"),
                 ),
               ],
             );
