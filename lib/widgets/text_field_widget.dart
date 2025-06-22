@@ -1,4 +1,3 @@
-// widgets/custom_text_field.dart
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:snakegame/providers/obscure_text_provider.dart';
