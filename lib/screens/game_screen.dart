@@ -3,17 +3,24 @@ import 'package:provider/provider.dart';
 import 'package:snakegame/models/position.dart';
 import 'package:snakegame/providers/game_provider.dart';
 
-class GameScreen extends StatelessWidget {
+class GameScreen extends StatefulWidget {
   const GameScreen({super.key});
 
+  @override
+  State<GameScreen> createState() => _GameScreenState();
+}
+
+class _GameScreenState extends State<GameScreen> {
   @override
   Widget build(BuildContext context) {
     final game = Provider.of<GameProvider>(context);
 
     if (game.isGameOver) {
+      /*addPostFrameCallback ensures that the current UI frame finished building and then only the dialog is shown containing restart and exit options*/
       WidgetsBinding.instance.addPostFrameCallback((_) {
         showDialog(
           context: context,
+          /*I've set the barrierDismissible to false so that when user taps outside of the dialog container, it doesn't closes the dialog container*/
           barrierDismissible: false,
           builder: (_) => AlertDialog(
             shape:
@@ -45,6 +52,7 @@ class GameScreen extends StatelessWidget {
       backgroundColor: Colors.grey[100],
       body: GestureDetector(
         onVerticalDragUpdate: (details) {
+          /*the details objects contains the delta value which represents the change in position from last position.*/
           if (details.delta.dy < 0) game.changeDirection("up");
           if (details.delta.dy > 0) game.changeDirection("down");
         },
@@ -100,6 +108,7 @@ class GameScreen extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(12.0),
                   child: GridView.builder(
+                    /*It ensure the GridView don't scroll as by default GridView is a scrollable widget*/
                     physics: const NeverScrollableScrollPhysics(),
                     itemCount:
                         GameProvider.totalRows * GameProvider.totalColumns,

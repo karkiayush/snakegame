@@ -37,6 +37,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Supabase instance
     final supabase = Supabase.instance.client;
 
     return MaterialApp(
@@ -48,8 +49,9 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.green,
       ),
 
-      /*Based on the user login or signed up state, we'll navigate them to menu screen else if not signed up or login, we'll navigate them to the auth screens*/
-      /*Adding home with FutureBuilder to check the user session*/
+      /*Based on the user login or signed up state, we'll navigate them to menu screen else if not signed up or logged in, we'll navigate them to the auth screens*/
+
+      /*Adding home with FutureBuilder to check the user session & based on the user session, we'll build the widget based on Future result*/
       home: FutureBuilder<Session?>(
         future: Future.value(supabase.auth.currentSession),
         builder: (context, snapshot) {

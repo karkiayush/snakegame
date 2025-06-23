@@ -20,7 +20,7 @@ class _SignupScreenState extends State<SignupScreen> {
   final _usernameController = TextEditingController();
 
   void _handleSignup() {
-    /*since the Provider.of(context) is not a part of widget tree rebuild process that is why we set the listen to false so that it doesn't listen to changes.
+    /*since this below Provider.of(context) is not a part of widget tree rebuild process that is why we set the listen to false so that it doesn't listen to changes.
     *
     * Since we're using this provider inside of a callback i.e. onPressed: _handleSignup, so we don't want to listen and rebuild our widget everytime the provider updates as we're using the value just once*/
     final signupProvider = Provider.of<SignupProvider>(context, listen: false);

@@ -46,7 +46,6 @@ class GameProvider extends ChangeNotifier {
       case 'left':
         newHead = Position(head.x - 1, head.y);
         break;
-      case 'right':
       default:
         newHead = Position(head.x + 1, head.y);
     }
@@ -54,7 +53,7 @@ class GameProvider extends ChangeNotifier {
     if (_isCollision(newHead)) {
       isGameOver = true;
       gameLoop.cancel();
-      await saveScoreToSupabase(); // ✅ Save score to Supabase on game over
+      await saveScoreToSupabase();
       notifyListeners();
       return;
     }
@@ -67,7 +66,6 @@ class GameProvider extends ChangeNotifier {
     } else {
       snake.removeAt(0);
     }
-
     notifyListeners();
   }
 
@@ -82,6 +80,7 @@ class GameProvider extends ChangeNotifier {
   void spawnFood() {
     final random = Random();
     late Position newFood;
+    /*Loop runs until the new food position is not same as the position that exists inside the snake list*/
     do {
       newFood = Position(
         random.nextInt(totalColumns),
@@ -92,10 +91,13 @@ class GameProvider extends ChangeNotifier {
   }
 
   void changeDirection(String newDirection) {
-    if ((direction == 'up' && newDirection == 'down') ||
+    /*Prevents the snake from turning directly into itself. For example: if we're going up, then directly we can't navigate to its opposite. For that we will navigate either left or right and then down*/
+    bool oppositeDirection = (direction == 'up' && newDirection == 'down') ||
         (direction == 'down' && newDirection == 'up') ||
         (direction == 'left' && newDirection == 'right') ||
-        (direction == 'right' && newDirection == 'left')) return;
+        (direction == 'right' && newDirection == 'left');
+
+    if (oppositeDirection) return;
 
     direction = newDirection;
     notifyListeners();
