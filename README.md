@@ -15,12 +15,10 @@ A fun and interactive Snake Game built using Flutter, powered by Supabase for us
     - Snake hits wall
     - Snake hits itself
 - Pause/Resume Game
-- Directional Controls using on-screen arrow buttons
+- Directional Controls using swipe gestures
 - Game Over Dialog with Score + Play Again / Exit options
 - Score Storage to Supabase
 - Session Persistence (user stays logged in after app restart)
-- Clean and responsive UI using Flutter best practices
-
 ---
 
 ## Tech Stack
